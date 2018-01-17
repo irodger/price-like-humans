@@ -1,0 +1,24 @@
+{
+  "name": "price-like-humans",
+  "version": "1.0.0",
+  "description": "JavaScript function beautify incoming numbers to human likes format. Ex: 10 000.000 001",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irodger/price-like-humans.git"
+  },
+  "keywords": [
+    "number-formatter",
+    "price-formatter",
+    "javascript"
+  ],
+  "author": "irodger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/irodger/price-like-humans/issues"
+  },
+  "homepage": "https://github.com/irodger/price-like-humans#readme"
+}
