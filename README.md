@@ -6,12 +6,12 @@ JavaScript function beautify incoming numbers to human likes format.
   
 #### Install
 ###### NPM users
-```javascript
+```
 npm install --save-dev price-like-humans
 ```
 
 ###### Yarn users
-```javascript
+```
 yarn add price-like-humans -D
 ```
 
