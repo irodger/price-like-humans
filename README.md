@@ -1,5 +1,5 @@
 #### Price like Humans
-
+[![Build Status](https://travis-ci.org/irodger/price-like-humans.svg?branch=master)](https://travis-ci.org/irodger/price-like-humans)
 ----
 JavaScript function beautify incoming numbers to human likes format.
   
