@@ -11,11 +11,11 @@ JavaScript function beautify incoming numbers to human likes format.
 #### Example
 ###### Without separator   
 ```javascript
-setNumberFormat(12345.6789) 
+getHumansPrice(12345.6789) 
 //> "12 345.678 9"
 ```
 ###### With separator
 ```javascript
-setNumberFormat(12345.6789, ',') 
+getHumansPrice(12345.6789, ',') 
 //> "12 345,678 9"
 ```
