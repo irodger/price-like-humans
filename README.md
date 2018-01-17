@@ -19,3 +19,15 @@ getHumansPrice(12345.6789)
 getHumansPrice(12345.6789, ',') 
 //> "12 345,678 9"
 ```
+
+
+#### Usage
+###### NodeJS
+```javascript
+var getHumansPrice = require('price-like-humans');
+```
+
+###### ES6
+```javascript
+import getHumansPrice from 'price-like-humans';
+```
