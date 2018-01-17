@@ -4,7 +4,7 @@
   "description": "JavaScript function beautify incoming numbers to human likes format. Ex: 10 000.000 001",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",

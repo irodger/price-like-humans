@@ -25,3 +25,5 @@ function getHumansPrice(value, separator) {
 
   return numberBeforeDot;
 }
+
+module.exports = getHumansPrice;
