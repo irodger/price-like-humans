@@ -12,7 +12,7 @@ npm install --save-dev price-like-humans
 
 ###### Yarn users
 ```javascript
-yarn add --save-dev price-like-humans -D
+yarn add price-like-humans -D
 ```
 
   Features:
