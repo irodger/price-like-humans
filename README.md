@@ -11,7 +11,7 @@ JavaScript Kit for formatting price or numbers to human likes format.
 ----
 - [Price formatter](#getprice)
 - [Exponential formatter](#exponentialformatter)
-- [Remove excess zeroes after dot](#removeZero)
+- [Remove excess zeroes after dot](#removezero)
 
 ### Table of contents
 ----
