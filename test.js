@@ -4,15 +4,10 @@ function testFn (fn, result) {
     const res = fn;
 
     if (result === res) {
-        console.log(`Test true: 
-    result: ${result} (${typeof(result)})
-    `);
+        console.log(`Passed: (${typeof(result)}) ${result}`);
         return true;
     } else {
-        console.log(`Test failed: 
-    return: ${res} (${typeof(res)})
-    expected: ${result} (${typeof(result)})
-    `);
+        console.log(`Failed: (${typeof(res)}) ${res}. Expected: (${typeof(result)}) ${result}`);
         return false;
     }
 }
