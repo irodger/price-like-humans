@@ -8,12 +8,12 @@
 JavaScript function beautify incoming numbers to human likes format.
   
 #### Install
-###### NPM users
+###### NPM users:
 ```
 npm install --save-dev price-like-humans
 ```
 
-###### Yarn users
+###### Yarn users:
 ```
 yarn add price-like-humans -D
 ```
@@ -26,12 +26,12 @@ yarn add price-like-humans -D
 #### Example
 ###### Without separator   
 ```javascript
-priceLikeHuman(12345.6789) 
+priceLikeHumans(12345.6789) 
 //> "12 345.678 9"
 ```
 ###### With separator
 ```javascript
-priceLikeHuman(12345.6789, ',') 
+priceLikeHumans(12345.6789, ',') 
 //> "12 345,678 9"
 ```
 
@@ -39,10 +39,10 @@ priceLikeHuman(12345.6789, ',')
 #### Usage
 ###### NodeJS
 ```javascript
-var priceLikeHuman = require('price-like-humans');
+var priceLikeHumans = require('price-like-humans');
 ```
 
 ###### ES6
 ```javascript
-import priceLikeHuman from 'price-like-humans';
+import priceLikeHumans from 'price-like-humans';
 ```

@@ -1,6 +1,6 @@
 const reverser = require('./utils/reverser');
 
-function priceLikeHuman(value, separator) {
+function priceLikeHumans(value, separator) {
   const stringSeparator = separator || '.';
   const numberArray = value.toString().split(stringSeparator);
   const regexpWithSpace = /\B(?=(\d{3})+(?!\d))/g;
@@ -16,4 +16,4 @@ function priceLikeHuman(value, separator) {
   return numberBeforeDot;
 }
 
-module.exports = priceLikeHuman;
+module.exports = priceLikeHumans;

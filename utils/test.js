@@ -1,5 +1,5 @@
 const test = require('./testing');
-var priceLikeHuman = require('./../index');
+var priceLikeHumans = require('./../index');
 
 /**
  * Test cases
@@ -16,9 +16,9 @@ const string3Result = '0.000 001';
 const floatstringResult = '1 000,02';
 const trashResult = 'teststring';
 
-test(priceLikeHuman(number), stringResult)
-test(priceLikeHuman(string), stringResult)
-test(priceLikeHuman(float), string2Result)
-test(priceLikeHuman(exponential), string3Result)
-test(priceLikeHuman(trash), trashResult)
-test(priceLikeHuman(floatString), floatstringResult)
+test(priceLikeHumans(number), stringResult)
+test(priceLikeHumans(string), stringResult)
+test(priceLikeHumans(float), string2Result)
+test(priceLikeHumans(exponential), string3Result)
+test(priceLikeHumans(trash), trashResult)
+test(priceLikeHumans(floatString), floatstringResult)
