@@ -1,3 +1,9 @@
 language: node_js
 node_js:
-  - "4"
+  - "8"
+notifications:
+  email:
+    recipients:
+      - raxennt@gmail.com
+    on_success: never
+    on_failure: always
