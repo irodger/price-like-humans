@@ -1,15 +1,13 @@
 var getHumansPrice = require('./index.js');
 
 function testFn (fn, result) {
-    const res = fn;
-
-    if (result === res) {
+    if (result === fn) {
         console.log(`Passed: (${typeof(result)}) ${result}`);
-        return true;
-    } else {
-        console.log(`Failed: (${typeof(res)}) ${res}. Expected: (${typeof(result)}) ${result}`);
-        return false;
-    }
+      } else {
+        console.log(`Failed: (${typeof(fn)}) ${fn}. Expected: (${typeof(result)}) ${result}`);
+      }
+      
+      return result === fn ? true : false;
 }
 
 const number = 10000;
