@@ -23,6 +23,17 @@ yarn add price-like-humans -D
 - Price formatter
 
 
+#### Usage
+###### NodeJS
+```javascript
+var priceLikeHumans = require('price-like-humans');
+```
+
+###### ES6
+```javascript
+import priceLikeHumans from 'price-like-humans';
+```
+
 #### Example
 ###### Without separator   
 ```javascript
@@ -35,14 +46,3 @@ priceLikeHumans(12345.6789, ',')
 //> "12 345,678 9"
 ```
 
-
-#### Usage
-###### NodeJS
-```javascript
-var priceLikeHumans = require('price-like-humans');
-```
-
-###### ES6
-```javascript
-import priceLikeHumans from 'price-like-humans';
-```
