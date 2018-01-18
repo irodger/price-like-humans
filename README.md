@@ -7,6 +7,10 @@
 ----
 JavaScript function beautify incoming numbers to human likes format.
   
+  Features:
+
+- Price formatter
+
 #### Install
 ###### NPM users:
 ```
@@ -18,9 +22,6 @@ npm install --save-dev price-like-humans
 yarn add price-like-humans -D
 ```
 
-  Features:
-
-- Price formatter
 
 
 #### Usage
