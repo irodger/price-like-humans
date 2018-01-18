@@ -1,19 +1,18 @@
 const reverser = require('./utils/reverser');
+const formattedPrice = require('./utils/formattedPrice');
+const exponential2normal = require('./utils/exponential2normal');
+const removeEndZeroes = require('./utils/removeEndZeroes');
 
-function priceLikeHumans(value, separator) {
-  const stringSeparator = separator || '.';
-  const numberArray = value.toString().split(stringSeparator);
-  const regexpWithSpace = /\B(?=(\d{3})+(?!\d))/g;
-  const numberBeforeDot = numberArray[0].replace(regexpWithSpace, ' ');
-
-  if (numberArray.length > 1) {
-    const reversedNumberAfterDot = reverser(numberArray[1]).replace(regexpWithSpace, ' ');
-    const numberAfterDot = reverser(reversedNumberAfterDot);
-
-    return [numberBeforeDot, numberAfterDot].join(stringSeparator);
+const priceLikeHumans = {
+  getPrice(value, separator) {
+    return formattedPrice(value, separator)
+  },
+  exponentialFormatter(value) {
+    return exponential2normal(value)
+  },
+  removeZero(value) {
+    return removeEndZeroes(value)
   }
-
-  return numberBeforeDot;
 }
 
 module.exports = priceLikeHumans;

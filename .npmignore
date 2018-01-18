@@ -1,4 +1,3 @@
 .npmignore
 .travis.yml
-utils/test.js
-utils/testing.js
+test

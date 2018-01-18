@@ -1,4 +1,4 @@
-function test (fn, result) {
+function testFn (fn, result) {
     if (result === fn) {
         console.log(`Passed: (${typeof(result)}) ${result}`);
       } else {
@@ -8,4 +8,4 @@ function test (fn, result) {
       return result === fn ? true : false;
 }
 
-module.exports = test;
+module.exports = testFn;
