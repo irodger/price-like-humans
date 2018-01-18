@@ -1,14 +1,14 @@
-const reverseThis = require('./utils/reverser.js');
+const reverser = require('./utils/reverser');
 
-function getHumansPrice(value, separator) {
+function priceLikeHuman(value, separator) {
   const stringSeparator = separator || '.';
   const numberArray = value.toString().split(stringSeparator);
   const regexpWithSpace = /\B(?=(\d{3})+(?!\d))/g;
   const numberBeforeDot = numberArray[0].replace(regexpWithSpace, ' ');
 
   if (numberArray.length > 1) {
-    const reversedNumberAfterDot = reverseThis(numberArray[1]).replace(regexpWithSpace, ' ');
-    const numberAfterDot = reverseThis(reversedNumberAfterDot);
+    const reversedNumberAfterDot = reverser(numberArray[1]).replace(regexpWithSpace, ' ');
+    const numberAfterDot = reverser(reversedNumberAfterDot);
 
     return [numberBeforeDot, numberAfterDot].join(stringSeparator);
   }
@@ -16,4 +16,4 @@ function getHumansPrice(value, separator) {
   return numberBeforeDot;
 }
 
-module.exports = getHumansPrice;
+module.exports = priceLikeHuman;

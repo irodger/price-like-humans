@@ -26,12 +26,12 @@ yarn add price-like-humans -D
 #### Example
 ###### Without separator   
 ```javascript
-getHumansPrice(12345.6789) 
+priceLikeHuman(12345.6789) 
 //> "12 345.678 9"
 ```
 ###### With separator
 ```javascript
-getHumansPrice(12345.6789, ',') 
+priceLikeHuman(12345.6789, ',') 
 //> "12 345,678 9"
 ```
 
@@ -39,10 +39,10 @@ getHumansPrice(12345.6789, ',')
 #### Usage
 ###### NodeJS
 ```javascript
-var getHumansPrice = require('price-like-humans');
+var priceLikeHuman = require('price-like-humans');
 ```
 
 ###### ES6
 ```javascript
-import getHumansPrice from 'price-like-humans';
+import priceLikeHuman from 'price-like-humans';
 ```

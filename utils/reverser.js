@@ -1,4 +1,4 @@
-function reverseThis(item) {
+function reverser(item) {
   if (typeof item === 'string') {
     return item.split('').reverse().join('');
   }
@@ -9,4 +9,4 @@ function reverseThis(item) {
   return null;
 }
 
-module.exports = reverseThis;
+module.exports = reverser;
