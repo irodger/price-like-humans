@@ -84,7 +84,7 @@ priceLikeHumans.exponentialFormatter(1e-7)
 ###### removeZero
 ```javascript
 priceLikeHumans.removeZero(100.0) 
-//> 10
+//> 100
 ```
 
 ###### removeZero with exponential
