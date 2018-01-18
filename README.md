@@ -9,15 +9,15 @@ JavaScript Kit for formatting price or numbers to human likes format.
   
 ### Features:
 ----
-- [Price formatter](#getPrice)
-- [Exponential formatter](#exponentialFormatter)
+- [Price formatter](#getprice)
+- [Exponential formatter](#exponentialformatter)
 - [Remove excess zeroes after dot](#removeZero)
 
 ### Table of contents
 ----
 - [Features](#features)
 - [Install](#install)
-- [Methods](#priceLikeHumans-methods)
+- [Methods](#pricelikehumans-methods)
 - [Usage](#usage)
   - [NodeJS](#nodejs)
   - [ES6](#es6)
@@ -42,9 +42,9 @@ yarn add price-like-humans -D
 ### priceLikeHumans methods
 | Methods | Arg types | Description |
 | --- | --- | --- |
-| `getPrice(value, separator)` | `value: number || string`<br> `separator: string` | Beautify incoming numbers to humans like price. Returns string with formatted number |
-| `exponentialFormatter(value)` | `value: number` | Formatting exponential numbers to string human likes numbers |
-| `removeZero(value)` | `value: number` | Remove excess zeroes after dot |
+| `getPrice(value, separator)` | `value: number or string`, `separator: string` | Beautify incoming numbers to humans like price. Returns string with formatted number |
+| `exponentialFormatter(value)` | `number` | Formatting exponential numbers to string human likes numbers |
+| `removeZero(value)` | `number` | Remove excess zeroes after dot |
 
 ### Usage
 ----
