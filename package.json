@@ -1,6 +1,6 @@
 {
   "name": "price-like-humans",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "JavaScript function beautify incoming numbers to human likes format. Ex: 10 000.000 001",
   "main": "index.js",
   "scripts": {
