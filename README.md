@@ -2,30 +2,31 @@
 [![Build Status](https://travis-ci.org/irodger/price-like-humans.svg?branch=master)](https://travis-ci.org/irodger/price-like-humans)
 [![NPM version](https://badge.fury.io/js/price-like-humans.svg)](http://badge.fury.io/js/price-like-humans)
 [![Downloads](https://img.shields.io/npm/dm/price-like-humans.svg)](http://npm-stat.com/charts.html?package=price-like-humans)
-[![License](https://img.shields.io/github/license/irodger/price-like-humans.svg?style=flat-square)](https://npmjs.org/package/price-like-humans)
+[![License](https://img.shields.io/github/license/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/blob/master/LICENSE)
 [![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/irodger/price-like-humans/pulls)
 ----
 JavaScript Kit for formatting price or numbers to human likes format.
   
 ### Features:
 ----
-- [Price formatter](#getprice)
-- [Exponential formatter](#exponentialformatter)
+- [Price formatter](#formattedprice)
+- [Exponential formatter](#exponentformatter)
 - [Remove excess zeroes after dot](#removezero)
 
 ### Table of contents
 ----
 - [Features](#features)
 - [Install](#install)
-- [Methods](#pricelikehumans-methods)
+- [Methods](#methods)
+- [Arguments](#arguments)
 - [Usage](#usage)
   - [NodeJS](#nodejs)
   - [ES6](#es6)
 - [Examples](#examples)
-  - [GetPrice](#getprice)
-  - [ExponentialFormatter](#exponentialformatter)
-  - [RemoveZero](#removezero)
+  - [FormattedPrice](#formattedprice)
+  - [ExponentFormatter](#exponentformatter)
+  - [ExcessZeroes](#excesszeroes)
 - [License](#license)
 
 
@@ -41,12 +42,19 @@ npm install --save-dev price-like-humans
 yarn add price-like-humans -D
 ```
 
-### priceLikeHumans methods
-| Methods | Argument types | Description |
+### Methods
+| Methods | Returns | Description |
 | --- | --- | --- |
-| `getPrice(value, separator)` | `value: number`<br>`decimal: string`<br>`separator: string` | Beautify incoming numbers to humans like price. Returns string with formatted number |
-| `exponentialFormatter(value)` | `number` | Formatting exponential numbers to string human likes numbers |
-| `removeZero(value)` | `number` | Remove excess zeroes after dot |
+| `formattedPrice(value, delimiter, separator)` | `string` | Formatting incoming numbers to humans like price with current locale delimeter |
+| `exponentFormatter(value)` | `string` | Formatting exponential numbers to human likes numbers. Exponent free |
+| `excessZeroes(value)` | `number` | Remove excess zeroes after dot |
+
+### Arguments
+| Argument | Argument type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `number`, `string` | _Required_ | Incoming numbers who will be formatting |
+| `delimiter` | `string` | Value delimiter | Delimiter symbol. Number who split decimal. Can be replaced |
+| `separator` | `string` | Your local separator | Symbol who separate grouped number. Can be replaced |
 
 ### Usage
 ----
@@ -62,55 +70,59 @@ import priceLikeHumans from 'price-like-humans';
 
 ### Examples
 ----
-#### GetPrice
-###### getPrice with your local separator
+#### FormattedPrice
+###### formattedPrice with your local separator
 ```javascript
-priceLikeHumans.getPrice(12345.6789) 
-//> "12,345.678,9"
+priceLikeHumans.formattedPrice(12345.6789) 
+//> EU Locale "12,345.678,9"
+//> RU Locale "12 345.678 9"
 ```
-###### getPrice without separator 
+###### formattedPrice without separator 
 ```javascript
-priceLikeHumans.getPrice(12345.6789) 
-//> "12 345.678 9"
-```
-
-###### getPrice with separator
-```javascript
-priceLikeHumans.getPrice(12345.6789, ',') 
-//> "12 345,678 9"
+priceLikeHumans.formattedPrice(12345.6789) 
+//> UK Locale "12,345.678,9"
+//> RU Locale "12 345.678 9"
 ```
 
-#### ExponentialFormatter
-###### exponentialFormatter   
+###### formattedPrice with separator
 ```javascript
-priceLikeHumans.exponentialFormatter(1e-7) 
+priceLikeHumans.formattedPrice(12345.6789, ',') 
+//> EN Locale "12,345,678,9"
+//> RU Locale "12 345,678 9"
+```
+
+#### ExponentFormatter
+###### exponentFormatter   
+```javascript
+priceLikeHumans.exponentFormatter(1e-7) 
 //> "0.0000001"
 ```
 
-#### RemoveZero
-###### removeZero
+#### ExcessZeroes
+###### excessZeroes
 ```javascript
-priceLikeHumans.removeZero(100.0) 
+priceLikeHumans.excessZeroes(100.0) 
 //> 100
 ```
 
-###### removeZero with exponential
+###### excessZeroes with exponential
 ```javascript
-priceLikeHumans.removeZero(10e-8) 
+priceLikeHumans.excessZeroes(10e-8) 
 //> 1e-7
 ```
-Also you can combine methods
-###### Formatted removeZero with exponential
+
+#### Also you can combine methods
+###### Formatted excessZeroes with exponential
 ```javascript
-priceLikeHumans.exponentialFormatter( priceLikeHumans.removeZero(10e-8) )
+priceLikeHumans.exponentFormatter( priceLikeHumans.excessZeroes(10e-8) )
 //> "0.0000001"
 ```
-We need more combine!
-###### Formatted removeZero with exponential with humans like price
+#### We need more combine!
+###### Formatted excessZeroes with exponential with humans like price
 ```javascript
-priceLikeHumans.getPrice( 
-  priceLikeHumans.exponentialFormatter( 
-    priceLikeHumans.removeZero(10e-8) 
+priceLikeHumans.formattedPrice( 
+  priceLikeHumans.exponentFormatter( 
+    priceLikeHumans.excessZeroes(10e-8) 
   ) 
 )
 //> "0.000 000 1"

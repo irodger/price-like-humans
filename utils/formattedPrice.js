@@ -1,27 +1,19 @@
 const reverser = require('./reverser');
-const getLang = require('./getlang');
-const formatter = new Intl.NumberFormat(getLang());
+const locale = require('./locale');
 
-const localDecimalSeparator = () => {
-  return formatter.format(1.1).replace(/\d/g, '').split('')[0];
-}
-
-const localSeparator = () => {
-  return formatter.format(1000).replace(/\d/g, '').split('')[0];
-}
-
-function formattedPrice(value, decimal, separator) {
-  const stringDecimalSeparator = decimal || localDecimalSeparator();
-  const stringSeparator = separator || localSeparator();
-  const numberArray = value.toString().split(stringDecimalSeparator);
+function formattedPrice(value, delimiter, separator) {
+  const valueSeparator = reverser(value).toString().replace(/\s|\d/g, '').length === 1 ? reverser(value).toString().replace(/\s|\d/g, '')[0] : delimiter || locale.delimiterSeparator;
+  const stringDelimiterSeparator = delimiter || valueSeparator;
+  const stringSeparator = separator || locale.separator;
+  const numberArray = value.toString().split(typeof value === 'number' ? '.' : valueSeparator);
   const regexpWithSpace = /\B(?=(\d{3})+(?!\d))/g;
   const numberBeforeDot = numberArray[0].replace(regexpWithSpace, stringSeparator);
-  
+
   if (numberArray.length > 1) {
     const reversedNumberAfterDot = reverser(numberArray[1]).replace(regexpWithSpace, stringSeparator);
     const numberAfterDot = reverser(reversedNumberAfterDot);
-    
-    return [numberBeforeDot, numberAfterDot].join(stringDecimalSeparator);
+
+    return [numberBeforeDot, numberAfterDot].join(stringDelimiterSeparator);
   }
   
   return numberBeforeDot;
