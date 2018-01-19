@@ -3,7 +3,8 @@
 [![NPM version](https://badge.fury.io/js/price-like-humans.svg)](http://badge.fury.io/js/price-like-humans)
 [![Downloads](https://img.shields.io/npm/dm/price-like-humans.svg)](http://npm-stat.com/charts.html?package=price-like-humans)
 [![License](https://img.shields.io/github/license/irodger/price-like-humans.svg?style=flat-square)](https://npmjs.org/package/price-like-humans)
-[![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/DeanNeal/price-like-humans/issues)
+[![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 ----
 JavaScript Kit for formatting price or numbers to human likes format.
   
@@ -25,6 +26,7 @@ JavaScript Kit for formatting price or numbers to human likes format.
   - [GetPrice](#getprice)
   - [ExponentialFormatter](#exponentialformatter)
   - [RemoveZero](#removezero)
+- [License](#license)
 
 
 ### Install
@@ -40,9 +42,9 @@ yarn add price-like-humans -D
 ```
 
 ### priceLikeHumans methods
-| Methods | Arg types | Description |
+| Methods | Argument types | Description |
 | --- | --- | --- |
-| `getPrice(value, separator)` | `value: number or string`, `separator: string` | Beautify incoming numbers to humans like price. Returns string with formatted number |
+| `getPrice(value, separator)` | `value: number`<br>`decimal: string`<br>`separator: string` | Beautify incoming numbers to humans like price. Returns string with formatted number |
 | `exponentialFormatter(value)` | `number` | Formatting exponential numbers to string human likes numbers |
 | `removeZero(value)` | `number` | Remove excess zeroes after dot |
 
@@ -61,7 +63,12 @@ import priceLikeHumans from 'price-like-humans';
 ### Examples
 ----
 #### GetPrice
-###### getPrice without separator   
+###### getPrice with your local separator
+```javascript
+priceLikeHumans.getPrice(12345.6789) 
+//> "12,345.678,9"
+```
+###### getPrice without separator 
 ```javascript
 priceLikeHumans.getPrice(12345.6789) 
 //> "12 345.678 9"
@@ -108,3 +115,6 @@ priceLikeHumans.getPrice(
 )
 //> "0.000 000 1"
 ```
+
+### License
+Price Like Humans is [MIT licensed](https://github.com/irodger/price-like-humans/LICENSE).
