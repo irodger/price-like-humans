@@ -1,10 +1,10 @@
 {
   "name": "price-like-humans",
-  "version": "0.2.3",
+  "version": "0.3.1",
   "description": "JavaScript Kit for formatting price or numbers to human likes format.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/test.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/irodger/price-like-humans/issues"
   },
-  "homepage": "https://github.com/irodger/price-like-humans#readme"
+  "homepage": "https://github.com/irodger/price-like-humans#readme",
+  "devDependencies": {
+    "jest": "^22.2.2"
+  }
 }

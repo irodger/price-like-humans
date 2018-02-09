@@ -1,3 +1,5 @@
 .npmignore
 .travis.yml
-test
+__test__
+yarn.lock
+node_modules

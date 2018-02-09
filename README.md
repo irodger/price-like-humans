@@ -6,7 +6,18 @@
 [![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/irodger/price-like-humans/pulls)
 ----
-JavaScript Kit for formatting price or numbers to human likes format.
+JavaScript Kit for formatting price or numbers to human likes format. Actually for cryptocurrency with 7+ numbers after delimiter
+  
+### Breaking updates (^0.3.1)
+----
+Change incoming arguments type at version 0.3.1. Now priceFormatter takes an object with value, delimiter, separator or only value 
+  
+#### Changelog
+version 0.3.1
+- Change priceFormatter incoming arguments type. Now it takes an object or once value
+- Testing with [Jest](https://github.com/facebook/jest)
+- Refactoring locale.js
+- Refactoring formattedPrice: Add default values 
   
 ### Features:
 ----
@@ -45,7 +56,7 @@ yarn add price-like-humans -D
 ### Methods
 | Methods | Returns | Description |
 | --- | --- | --- |
-| `formattedPrice(value, delimiter, separator)` | `string` | Formatting incoming numbers to humans like price with current locale delimeter |
+| `formattedPrice({value, delimiter, separator})` | `string` | Formatting incoming numbers to humans like price with current locale delimeter |
 | `exponentFormatter(value)` | `string` | Formatting exponential numbers to human likes numbers. Exponent free |
 | `excessZeroes(value)` | `number` | Remove excess zeroes after dot |
 
@@ -86,7 +97,7 @@ priceLikeHumans.formattedPrice(12345.6789)
 
 ###### formattedPrice with separator
 ```javascript
-priceLikeHumans.formattedPrice(12345.6789, ',') 
+priceLikeHumans.formattedPrice( {value: 12345.6789, delimiter:','} ) 
 //> EN Locale "12,345,678,9"
 //> RU Locale "12 345,678 9"
 ```
