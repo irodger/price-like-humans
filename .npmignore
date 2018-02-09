@@ -3,3 +3,6 @@
 __test__
 yarn.lock
 node_modules
+.gitignore
+.idea
+.DC_Store

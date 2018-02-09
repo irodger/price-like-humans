@@ -1,6 +1,6 @@
 {
   "name": "price-like-humans",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "JavaScript Kit for formatting price or numbers to human likes format.",
   "main": "index.js",
   "scripts": {
