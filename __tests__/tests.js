@@ -1,5 +1,6 @@
 const priceLikeHumans = require('./../index');
 const reverser = require('./../utils/reverser');
+const locale = require('./../utils/locale');
 
 const cases = {
   string: '10000',
@@ -9,11 +10,14 @@ const cases = {
   intReversed: 54321,
   arr: [],
   number: 10000,
+  numberLocalFormatter: `10${locale.separator}000`,
   zeroAfterDot: 10000.0,
   zeroAfterDotString: '10000.0',
   zeroAfterDotExponential: 10e-8,
   float: 1234.5678,
   floatDotString: '1234.5678',
+  floatWithCustomDelimiter: `1${locale.separator}234,567${locale.separator}8`,
+  floatWithCustomSeparator: `1 234${locale.delimiter}567 8`,
   floatString: '1234,5678',
   floatFormatted: '1 234.567 8',
   floatEnFormatted: '1,234.567,8',
@@ -27,7 +31,7 @@ const cases = {
   exponentialString: '0.0000001',
   exponentialEnFormatted: '0.000,000,1',
   exponentialFormatted: '0.000 000 1',
-  exponentialRuFormatted: '0,000 000 1',
+  exponentialLocalFormatted: `0${locale.delimiter}000${locale.separator}000${locale.separator}1`,
   trashString: 'test'
 };
 
@@ -35,15 +39,14 @@ describe('priceLikeHumans', () => {
     it('formattedPrice', () => {
         expect(priceLikeHumans.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
         expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-        expect(priceLikeHumans.formattedPrice(cases.number)).toEqual(cases.stringRuFormatted);
-        expect(priceLikeHumans.formattedPrice(cases.number)).toEqual(cases.stringRuFormatted);
-        expect(priceLikeHumans.formattedPrice(cases.string)).toEqual(cases.stringRuFormatted);
-        expect(priceLikeHumans.formattedPrice({ value:cases.float, separator: ' ' })).toEqual(cases.floatStringFormatted);
+        expect(priceLikeHumans.formattedPrice(cases.number)).toEqual(cases.numberLocalFormatter);
+        expect(priceLikeHumans.formattedPrice(cases.string)).toEqual(cases.numberLocalFormatter);
+        expect(priceLikeHumans.formattedPrice({ value:cases.float, separator: ' ' })).toEqual(cases.floatWithCustomSeparator);
         expect(priceLikeHumans.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
-        expect(priceLikeHumans.formattedPrice( priceLikeHumans.exponentFormatter(cases.exponential) )).toEqual(cases.exponentialRuFormatted);
+        expect(priceLikeHumans.formattedPrice( priceLikeHumans.exponentFormatter(cases.exponential) )).toEqual(cases.exponentialLocalFormatted);
         expect(priceLikeHumans.formattedPrice(cases.trashString)).toEqual(cases.trashString);
-        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, delimiter:',' })).toEqual(cases.floatStringRuFormatted);
-        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, separator:' ' })).toEqual(cases.floatStringFormatted);
+        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, delimiter:',' })).toEqual(cases.floatWithCustomDelimiter);
+        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, separator:' ' })).toEqual(cases.floatWithCustomSeparator);
     });
 
     it('exponentFormatter', () => {
