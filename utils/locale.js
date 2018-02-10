@@ -1,9 +1,13 @@
 function getLang() {
     let locale = 'en';
-    
+
     if (typeof navigator !== 'undefined' && typeof navigator.locale !== 'undefined') { locale = navigator.locale }
     if (typeof env !== 'undefined' && typeof env.LANG !== 'undefined') { locale = env.LANG.split('_')[0] }
-    if (typeof process.env !== 'undefined' && typeof process.env.LANG !== 'undefined') { locale = process.env.LANG.split('_')[0] }
+    if (typeof process.env !== 'undefined') {
+      const lang = process.env.LANG || process.env.LC_CTYPE;
+
+      locale = lang.split('_')[0]
+    }
 
     return locale;
 }
