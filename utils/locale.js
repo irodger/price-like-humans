@@ -6,7 +6,7 @@ function getLang() {
     if (typeof process.env !== 'undefined') {
       const lang = process.env.LANG || process.env.LC_CTYPE;
 
-      locale = lang.split('_')[0]
+      locale = lang ? lang.split('_')[0] : locale;
     }
 
     return locale;

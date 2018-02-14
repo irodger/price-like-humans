@@ -36,39 +36,40 @@ const cases = {
 };
 
 describe('priceLikeHumans', () => {
-    it('formattedPrice', () => {
-        expect(priceLikeHumans.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-        expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-        expect(priceLikeHumans.formattedPrice(cases.number)).toEqual(cases.numberLocalFormatter);
-        expect(priceLikeHumans.formattedPrice(cases.string)).toEqual(cases.numberLocalFormatter);
-        expect(priceLikeHumans.formattedPrice({ value:cases.float, separator: ' ' })).toEqual(cases.floatWithCustomSeparator);
-        expect(priceLikeHumans.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
-        expect(priceLikeHumans.formattedPrice( priceLikeHumans.exponentFormatter(cases.exponential) )).toEqual(cases.exponentialLocalFormatted);
-        expect(priceLikeHumans.formattedPrice(cases.trashString)).toEqual(cases.trashString);
-        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, delimiter:',', separator: ' ' })).toEqual(cases.floatWithCustomDelimiter);
-        expect(priceLikeHumans.formattedPrice({ value: cases.floatString, separator:' ' })).toEqual(cases.floatWithCustomSeparator);
-    });
+  it('formattedPrice', () => {
+    expect(priceLikeHumans.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
+    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
+    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:'.',separator:'.' })).toEqual(false);
+    expect(priceLikeHumans.formattedPrice(cases.number)).toEqual(cases.numberLocalFormatter);
+    expect(priceLikeHumans.formattedPrice(cases.string)).toEqual(cases.numberLocalFormatter);
+    expect(priceLikeHumans.formattedPrice({ value:cases.float, separator: ' ' })).toEqual(cases.floatWithCustomSeparator);
+    expect(priceLikeHumans.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
+    expect(priceLikeHumans.formattedPrice( priceLikeHumans.exponentFormatter(cases.exponential) )).toEqual(cases.exponentialLocalFormatted);
+    expect(priceLikeHumans.formattedPrice(cases.trashString)).toEqual(cases.trashString);
+    expect(priceLikeHumans.formattedPrice({ value: cases.floatString, delimiter:',', separator: ' ' })).toEqual(cases.floatWithCustomDelimiter);
+    expect(priceLikeHumans.formattedPrice({ value: cases.floatString, separator:' ' })).toEqual(cases.floatWithCustomSeparator);
+  });
 
-    it('exponentFormatter', () => {
-        expect(priceLikeHumans.exponentFormatter(cases.number)).toEqual(cases.string);
-        expect(priceLikeHumans.exponentFormatter(cases.string)).toEqual(cases.string);
-        expect(priceLikeHumans.exponentFormatter(cases.float)).toEqual(cases.floatDotString);
-        expect(priceLikeHumans.exponentFormatter(cases.exponential)).toEqual(cases.exponentialString);
-        expect(priceLikeHumans.exponentFormatter(cases.trashString)).toEqual(cases.trashString);
-        expect(priceLikeHumans.exponentFormatter(cases.floatString)).toEqual(cases.floatString);
-    });
+  it('exponentFormatter', () => {
+    expect(priceLikeHumans.exponentFormatter(cases.number)).toEqual(cases.string);
+    expect(priceLikeHumans.exponentFormatter(cases.string)).toEqual(cases.string);
+    expect(priceLikeHumans.exponentFormatter(cases.float)).toEqual(cases.floatDotString);
+    expect(priceLikeHumans.exponentFormatter(cases.exponential)).toEqual(cases.exponentialString);
+    expect(priceLikeHumans.exponentFormatter(cases.trashString)).toEqual(cases.trashString);
+    expect(priceLikeHumans.exponentFormatter(cases.floatString)).toEqual(cases.floatString);
+  });
 
-    it('excessZeroes', () => {
-        expect(priceLikeHumans.excessZeroes(cases.zeroAfterDot)).toEqual(cases.number);
-        expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotString)).toEqual(cases.number);
-        expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotExponential)).toEqual(cases.exponential);
-    });
+  it('excessZeroes', () => {
+    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDot)).toEqual(cases.number);
+    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotString)).toEqual(cases.number);
+    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotExponential)).toEqual(cases.exponential);
+  });
 });
 
 describe('reverser', () => {
-    it('reverser', () => {
-        expect(reverser(cases.string)).toEqual(cases.stringReversed);
-        expect(reverser(cases.int)).toEqual(cases.intReversed);
-        expect(reverser(cases.arr)).toEqual(null);
-    });
+  it('reverser', () => {
+    expect(reverser(cases.string)).toEqual(cases.stringReversed);
+    expect(reverser(cases.int)).toEqual(cases.intReversed);
+    expect(reverser(cases.arr)).toEqual(null);
+  });
 });
