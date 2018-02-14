@@ -13,9 +13,9 @@ JavaScript Kit for formatting price or numbers to human likes format. Actually f
 Change incoming arguments type at version 0.3.1. Now priceFormatter takes an object with value, delimiter, separator or only value 
   
 #### Changelog
-version 0.3.4
+##### version 0.3.5
 - Minor fixes 
-version 0.3.1
+##### version 0.3.1
 - Change priceFormatter incoming arguments type. Now it takes an object or once value
 - Testing with [Jest](https://github.com/facebook/jest)
 - Refactoring locale.js
