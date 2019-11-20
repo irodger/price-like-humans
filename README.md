@@ -8,18 +8,16 @@
 ----
 JavaScript Kit for formatting price or numbers to human likes format. Actually for cryptocurrency with 7+ numbers after delimiter
   
-### Breaking updates (^0.3.1)
-----
-Change incoming arguments type at version 0.3.1. Now priceFormatter takes an object with value, delimiter, separator or only value 
-  
 #### Changelog
+##### version 0.4.0
+- Updated jest dependencies
 ##### version 0.3.5
 - Minor fixes 
 ##### version 0.3.1
-- Change priceFormatter incoming arguments type. Now it takes an object or once value
-- Testing with [Jest](https://github.com/facebook/jest)
-- Refactoring locale.js
-- Refactoring formattedPrice: Add default values 
+- Changed priceFormatter incoming arguments type. Now it takes an object or once value
+- Tested with [Jest](https://github.com/facebook/jest)
+- Refactored locale.js
+- Refactored formattedPrice: Add default values 
   
 ### Features:
 ----
@@ -58,86 +56,88 @@ yarn add price-like-humans -D
 ### Methods
 | Methods | Returns | Description |
 | --- | --- | --- |
-| `formattedPrice({value, delimiter, separator})` | `string` | Formatting incoming numbers to humans like price with current locale delimeter |
+| `formattedPrice(value)` | `string` | Formatting incoming numbers to humans like price with current locale delimiter |
 | `exponentFormatter(value)` | `string` | Formatting exponential numbers to human likes numbers. Exponent free |
 | `excessZeroes(value)` | `number` | Remove excess zeroes after dot |
 
-### Arguments
+### formattedPrice options
 | Argument | Argument type | Default | Description |
 | --- | --- | --- | --- |
-| `value` | `number`, `string` | _Required_ | Incoming numbers who will be formatting |
-| `delimiter` | `string` | Value delimiter | Delimiter symbol. Number who split decimal. Can be replaced |
-| `separator` | `string` | Your local separator | Symbol who separate grouped number. Can be replaced |
+| `value` | `number`, `string`, `object` | _*required_ | Incoming numbers who will be formatting |
+| `delimiter` | `string` | Value delimiter,  _(optional)_ | Delimiter symbol. Number who split decimal. Can be replaced |
+| `separator` | `string` | Your local separator  _(optional)_ | Symbol who separate grouped number. Can be replaced |
 
 ### Usage
 ----
 ###### NodeJS
 ```javascript
-var priceLikeHumans = require('price-like-humans');
+const priceLikeHumans = require('price-like-humans');
 ```
 
 ###### ES6
 ```javascript
 import priceLikeHumans from 'price-like-humans';
+// or methods only
+import { formattedPrice, exponentFormatter, excessZeroes } from 'price-like-humans';
 ```
 
 ### Examples
 ----
-#### FormattedPrice
-###### formattedPrice with your local separator
+#### `formattedPrice`
+###### Without separator arguments (putted your local separator)
 ```javascript
 priceLikeHumans.formattedPrice(12345.6789) 
+
 //> EU Locale "12,345.678,9"
 //> RU Locale "12 345.678 9"
 ```
-###### formattedPrice without separator 
-```javascript
-priceLikeHumans.formattedPrice(12345.6789) 
-//> UK Locale "12,345.678,9"
-//> RU Locale "12 345.678 9"
-```
 
-###### formattedPrice with separator
+###### Using with options
 ```javascript
-priceLikeHumans.formattedPrice( {value: 12345.6789, delimiter:','} ) 
+formattedPrice( {value: 12345.6789, delimiter:','} ) 
+
 //> EN Locale "12,345,678,9"
 //> RU Locale "12 345,678 9"
 ```
 
-#### ExponentFormatter
-###### exponentFormatter   
+#### `exponentFormatter`
 ```javascript
-priceLikeHumans.exponentFormatter(1e-7) 
+exponentFormatter(1e-7) 
+
 //> "0.0000001"
 ```
 
-#### ExcessZeroes
-###### excessZeroes
+#### `excessZeroes`
 ```javascript
-priceLikeHumans.excessZeroes(100.0) 
+excessZeroes(100.0) 
+
 //> 100
 ```
 
-###### excessZeroes with exponential
+###### `excessZeroes` with exponential
 ```javascript
-priceLikeHumans.excessZeroes(10e-8) 
+excessZeroes(10e-8) 
+
 //> 1e-7
 ```
 
 #### Also you can combine methods
-###### Formatted excessZeroes with exponential
+###### Formatted `excessZeroes` with exponential
 ```javascript
-priceLikeHumans.exponentFormatter( priceLikeHumans.excessZeroes(10e-8) )
+exponentFormatter( excessZeroes(10e-8) )
+
 //> "0.0000001"
 ```
-#### We need more combine!
-###### Formatted excessZeroes with exponential with humans like price
+
+#### Needs more combine!
+###### Formatted `excessZeroes` with exponential with humans like price
 ```javascript
-priceLikeHumans.formattedPrice( 
-  priceLikeHumans.exponentFormatter( 
-    priceLikeHumans.excessZeroes(10e-8) 
+formattedPrice( 
+  exponentFormatter( 
+    excessZeroes(10e-8) 
   ) 
 )
+
 //> "0.000 000 1"
 ```
 

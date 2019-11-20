@@ -13,6 +13,6 @@ const priceLikeHumans = {
   excessZeroes(value) {
     return excessZeroes(value)
   }
-}
+};
 
 module.exports = priceLikeHumans;
