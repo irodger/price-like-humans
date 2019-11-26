@@ -5,4 +5,4 @@ function excessZeroes(value) {
     return parseFloat(parseFloat(value));
 }
 
-module.exports = excessZeroes;
+export default excessZeroes;

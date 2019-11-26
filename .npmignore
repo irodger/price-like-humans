@@ -1,8 +1,9 @@
+__test__
+src
+node_modules
 .npmignore
 .travis.yml
-__test__
-yarn.lock
-node_modules
 .gitignore
 .idea
+yarn.lock
 .DC_Store

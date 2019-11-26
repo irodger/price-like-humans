@@ -6,9 +6,11 @@
 [![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/irodger/price-like-humans/pulls)
 ----
-JavaScript Kit for formatting price or numbers to human likes format. Actually for cryptocurrency with 7+ numbers after delimiter
+JS kit for formatting price or numbers to human likes format. Also kit will be useful for crypto-currency with 7+ numbers after a delimiter
   
 #### Changelog
+##### version 0.5.0
+- Built with RollUp and Babel
 ##### version 0.4.0
 - Updated jest dependencies
 ##### version 0.3.5

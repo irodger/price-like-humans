@@ -1,9 +1,10 @@
 {
   "name": "price-like-humans",
-  "version": "0.4.2",
-  "description": "JavaScript Kit for formatting price or numbers to human likes format.",
-  "main": "index.js",
+  "version": "0.5.0",
+  "description": "JS tools for formatting price or numbers to human likes format.",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "rm -rf ./dist && rollup -c",
     "test": "jest"
   },
   "repository": {
@@ -25,6 +26,12 @@
   },
   "homepage": "https://github.com/irodger/price-like-humans#readme",
   "devDependencies": {
-    "jest": "^24.9.0"
-  }
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "jest": "^24.9.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "type": "module"
 }

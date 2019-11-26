@@ -1,13 +1,12 @@
-const reverser = require('./reverser');
-const locale = require('./locale');
+import reverser from './reverser';
+import locale from './locale';
 
 function formattedPrice({ value, delimiter = locale.delimiter, separator = locale.separator }) {
   const args = arguments[0];
 
-  if (typeof args['delimiter'] !== 'undefined' && typeof args['separator'] !== 'undefined') {
-    if (delimiter === separator) {
-      return false;
-    }
+  if (typeof args['delimiter'] !== 'undefined' && typeof args['separator'] !== 'undefined' && delimiter === separator) {
+
+    return false;
   } else {
     if (delimiter === separator) {
       if (typeof args['delimiter'] === 'undefined' && separator === '.') {
@@ -47,4 +46,4 @@ function formattedPrice({ value, delimiter = locale.delimiter, separator = local
   return numberBeforeDot;
 }
 
-module.exports = formattedPrice;
+export default formattedPrice;

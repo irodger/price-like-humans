@@ -9,4 +9,4 @@ function reverser(item) {
   return null;
 }
 
-module.exports = reverser;
+export default reverser;

@@ -1,4 +1,4 @@
-function getLang() {
+const getLang = () => {
     let locale = 'en';
 
     if (typeof navigator !== 'undefined' && typeof navigator.locale !== 'undefined') { locale = navigator.locale }
@@ -10,17 +10,17 @@ function getLang() {
     }
 
     return locale;
-}
+};
 
 const formatter = new Intl.NumberFormat(getLang());
-const getlocalDelimiter = (value) => {
+const getLocalDelimiter = (value) => {
   return formatter.format(value).replace(/\d/g, '').split('')[0];
-}
+};
 
 const locale = {
   lang: getLang(),
-  separator: getlocalDelimiter(1000),
-  delimiter: getlocalDelimiter(1.1)
-}
+  separator: getLocalDelimiter(1000),
+  delimiter: getLocalDelimiter(1.1)
+};
 
-module.exports = locale;
+export default locale;
