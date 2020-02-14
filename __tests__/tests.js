@@ -10,7 +10,7 @@ const cases = {
   number: 10000,
   float: 1234.5678,
   floatDotString: '1234.5678',
-  floatWithCustomDelimiter: `1 234,567 8`,
+  floatWithCustomDelimiter: '1 234,567 8',
   floatString: '1234,5678',
   floatFormatted: '1 234.567 8',
   floatEnFormatted: '1,234.567,8',
