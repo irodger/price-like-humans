@@ -1,6 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import { uglify } from "rollup-plugin-uglify";
+import { uglify } from 'rollup-plugin-uglify';
 
 export default {
   input: 'src/index.ts',
