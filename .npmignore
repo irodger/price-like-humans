@@ -1,11 +1,10 @@
-__test__
+__tests__
 src
 node_modules
 .npmignore
 .travis.yml
 .gitignore
 .idea
-.babelrc
 rollup.config.js
 tsconfig.json
 yarn.lock

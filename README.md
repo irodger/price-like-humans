@@ -22,6 +22,7 @@ Breaking changes from 0.5.0 to 0.6.0 see changelog
     - Added several tests
     - Added minifying
     - Removed excessZero function (if you need that func, just parseFloat your number)
+    - Removed babel, compiling by rollup & typescript
     v0.5.0
     - Built with RollUp and Babel
     v0.4.0
