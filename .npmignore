@@ -5,5 +5,8 @@ node_modules
 .travis.yml
 .gitignore
 .idea
+.babelrc
+rollup.config.js
+tsconfig.json
 yarn.lock
 .DC_Store

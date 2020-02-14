@@ -8,24 +8,37 @@
 ----
 JS kit for formatting price or numbers to human likes format. Also kit will be useful for crypto-currency with 7+ numbers after a delimiter
   
+If you want to use excessZero function you will need to install version v0.5.0 (I dunno why you will need to use that useless function)
+`npm i --save-dev price-like-humans@0.5.0`
+
+Breaking changes from 0.5.0 to 0.6.0 see changelog
 #### Changelog
-##### version 0.5.0
-- Built with RollUp and Babel
-##### version 0.4.0
-- Updated jest dependencies
-##### version 0.3.5
-- Minor fixes 
-##### version 0.3.1
-- Changed priceFormatter incoming arguments type. Now it takes an object or once value
-- Tested with [Jest](https://github.com/facebook/jest)
-- Refactored locale.js
-- Refactored formattedPrice: Add default values 
+<details>
+    <summary>Show changelog</summary>
+    
+    v0.6.0
+    - Added typescript
+    - Added custom locale to formattedPrice
+    - Added several tests
+    - Removed excessZero function (if you need that func, just parseFloat your number)
+    v0.5.0
+    - Built with RollUp and Babel
+    v0.4.0
+    - Updated jest dependencies
+    v0.3.5
+    - Minor fixes 
+    v0.3.1
+    - Changed priceFormatter incoming arguments type. Now it takes an object or once value
+    - Tested with [Jest](https://github.com/facebook/jest)
+    - Refactored locale.js
+    - Refactored formattedPrice: Add default values 
+</details>
+
   
 ### Features:
 ----
 - [Price formatter](#formattedprice)
 - [Exponential formatter](#exponentformatter)
-- [Remove excess zeroes after dot](#removezero)
 
 ### Table of contents
 ----
@@ -39,7 +52,6 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
 - [Examples](#examples)
   - [FormattedPrice](#formattedprice)
   - [ExponentFormatter](#exponentformatter)
-  - [ExcessZeroes](#excesszeroes)
 - [License](#license)
 
 
@@ -47,7 +59,7 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
 ----
 ###### NPM users:
 ```
-npm install --save-dev price-like-humans
+npm i --save-dev price-like-humans
 ```
 
 ###### Yarn users:
@@ -58,48 +70,58 @@ yarn add price-like-humans -D
 ### Methods
 | Methods | Returns | Description |
 | --- | --- | --- |
-| `formattedPrice(value)` | `string` | Formatting incoming numbers to humans like price with current locale delimiter |
+| `formattedPrice(value)` | `string` | Formatting incoming numbers to humans like price with user locale delimiter |
 | `exponentFormatter(value)` | `string` | Formatting exponential numbers to human likes numbers. Exponent free |
-| `excessZeroes(value)` | `number` | Remove excess zeroes after dot |
 
 ### formattedPrice options
-| Argument | Argument type | Default | Description |
-| --- | --- | --- | --- |
-| `value` | `number`, `string`, `object` | _*required_ | Incoming numbers who will be formatting |
-| `delimiter` | `string` | Value delimiter,  _(optional)_ | Delimiter symbol. Number who split decimal. Can be replaced |
-| `separator` | `string` | Your local separator  _(optional)_ | Symbol who separate grouped number. Can be replaced |
+| Argument | Argument type | Description |
+| --- | --- | --- |
+| value * | `number, string, object` | Incoming numbers which will be formatted |
+| delimiter | `string` | Delimiter symbol. Number which split decimal. Can be replaced |
+| separator | `string` | Symbol which separates grouped number. Can be replaced |
+| lang | `string` | You can set locale option. Using user locale by default |
+
+⚠️Warning: When works in Nodejs environment, intl.NumberFormat contains 'en-US' locale only, so use the `separator` with `delimiter` when the code needs to run on a server-side.
 
 ### Usage
 ----
-###### NodeJS
+#### NodeJS
 ```javascript
 const priceLikeHumans = require('price-like-humans');
 ```
 
-###### ES6
+#### ES6
 ```javascript
 import priceLikeHumans from 'price-like-humans';
 // or methods only
-import { formattedPrice, exponentFormatter, excessZeroes } from 'price-like-humans';
+import { formattedPrice, exponentFormatter } from 'price-like-humans';
 ```
 
 ### Examples
 ----
 #### `formattedPrice`
-###### Without separator arguments (putted your local separator)
+Without separator arguments (putted your local separator)
 ```javascript
 priceLikeHumans.formattedPrice(12345.6789) 
 
-//> EU Locale "12,345.678,9"
-//> RU Locale "12 345.678 9"
+//> "12,345.678,9" // EU Locale 
+//> "12 345.678 9" // RU Locale 
 ```
 
 ###### Using with options
 ```javascript
 formattedPrice( {value: 12345.6789, delimiter:','} ) 
 
-//> EN Locale "12,345,678,9"
-//> RU Locale "12 345,678 9"
+//> "12.345,678.9" // EN Locale 
+//> "12 345,678 9" // RU Locale 
+
+formattedPrice( {value: 12345.6789, lang: 'ru'} ) 
+
+//> "12 345,678 9"
+
+formattedPrice( {value: 12345.6789, lang: 'en'} ) 
+
+//> "12,345.678,9"
 ```
 
 #### `exponentFormatter`
@@ -109,35 +131,16 @@ exponentFormatter(1e-7)
 //> "0.0000001"
 ```
 
-#### `excessZeroes`
-```javascript
-excessZeroes(100.0) 
-
-//> 100
-```
-
-###### `excessZeroes` with exponential
-```javascript
-excessZeroes(10e-8) 
-
-//> 1e-7
-```
-
 #### Also you can combine methods
-###### Formatted `excessZeroes` with exponential
+Exponential with price like humans
 ```javascript
-exponentFormatter( excessZeroes(10e-8) )
+formattedPrice(1e-7)
 
-//> "0.0000001"
-```
+//> '1e-7' // Needs to combine
 
-#### Needs more combine!
-###### Formatted `excessZeroes` with exponential with humans like price
-```javascript
+
 formattedPrice( 
-  exponentFormatter( 
-    excessZeroes(10e-8) 
-  ) 
+  exponentFormatter(1e-7) 
 )
 
 //> "0.000 000 1"

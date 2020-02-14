@@ -1,31 +1,37 @@
 import reverser from './reverser';
-import locale from './locale';
+import locale, { getLocale } from './locale';
 
-function formattedPrice({ value, delimiter = locale.delimiter, separator = locale.separator }) {
+type TformattedPrice = {
+  [key: string]: number | string | undefined;
+  delimiter?: string;
+  separator?: string;
+  lang?: string;
+};
+
+function formattedPrice({ value, delimiter, separator, lang}: TformattedPrice ): string | boolean {
   const args = arguments[0];
 
-  if (typeof args['delimiter'] !== 'undefined' && typeof args['separator'] !== 'undefined' && delimiter === separator) {
-
+  if (delimiter === separator && typeof delimiter !== 'undefined') {
+    console.error('The delimiter can`t be the same as the separator');
     return false;
-  } else {
-    if (delimiter === separator) {
-      if (typeof args['delimiter'] === 'undefined' && separator === '.') {
-        delimiter = ','
-      }
+  }
 
-      if (typeof args['delimiter'] === 'undefined' && separator === ',') {
-        delimiter = '.'
-      }
+  const { delimiter: userDel, separator: userSep } = lang ? getLocale(lang) : locale;
 
-      if (typeof args['separator'] === 'undefined') {
-        if (delimiter === ',' || delimiter === '.') {
-          separator = '.'
-        }
+  delimiter = delimiter || userDel;
+  separator = separator || userSep;
 
-        if (delimiter === ' ') {
-          return false;
-        }
-      }
+  if (delimiter === separator) {
+    if (separator === '.') {
+      delimiter = ','
+    }
+
+    if (separator === ',') {
+      delimiter = '.'
+    }
+
+    if (separator === ' ') {
+      delimiter = '.'
     }
   }
 

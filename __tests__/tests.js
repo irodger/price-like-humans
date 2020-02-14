@@ -1,4 +1,4 @@
-const priceLikeHumans = require('./../dist/index.js');
+const plh = require('./../dist/index.js');
 
 const cases = {
   string: '10000',
@@ -8,9 +8,6 @@ const cases = {
   intReversed: 54321,
   arr: [],
   number: 10000,
-  zeroAfterDot: 10000.0,
-  zeroAfterDotString: '10000.0',
-  zeroAfterDotExponential: 10e-8,
   float: 1234.5678,
   floatDotString: '1234.5678',
   floatWithCustomDelimiter: `1 234,567 8`,
@@ -31,29 +28,36 @@ const cases = {
 };
 
 describe('priceLikeHumans', () => {
-  it('formattedPrice', () => {
-    expect(priceLikeHumans.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:'.',separator:'.' })).toEqual(false);
-    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', delimiter:'.' })).toEqual('1,000.123,4');
-    expect(priceLikeHumans.formattedPrice({ value:'1000.1234', separator:'.' })).toEqual('1.000,123.4');
-    expect(priceLikeHumans.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
-    expect(priceLikeHumans.formattedPrice(cases.trashString)).toEqual(cases.trashString);
-    expect(priceLikeHumans.formattedPrice({ value: cases.floatString, delimiter:',', separator: ' ' })).toEqual(cases.floatWithCustomDelimiter);
+  it('test formattedPrice with one argument', () => {
+    expect(plh.formattedPrice(10000)).toEqual('10,000');
+    expect(plh.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
+    expect(plh.formattedPrice(cases.trashString)).toEqual(cases.trashString);
+  });
+
+  it('test formattedPrice with several arguments', () => {
+    expect(plh.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:'.',separator:'.' })).toEqual(false);
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',',separator:',' })).toEqual(false);
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:' ',separator:' ' })).toEqual(false);
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:'.' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice({ value: 1000.1234, lang: 'en' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice({ value:'1000.1234', separator:'.' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice({ value:'1000.1234', separator:' ' })).toEqual('1 000.123 4');
+    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',', separator:' ' })).toEqual('1 000,123 4');
+    expect(plh.formattedPrice({ value: cases.floatString, delimiter:',', separator: ' ' })).toEqual(cases.floatWithCustomDelimiter);
+  });
+
+  it('test combine formattedPrice with exponentFormatter', () => {
+    expect(plh.formattedPrice(plh.exponentFormatter(cases.exponential))).toEqual(cases.exponentialEnFormatted);
   });
 
   it('exponentFormatter', () => {
-    expect(priceLikeHumans.exponentFormatter(cases.number)).toEqual(cases.string);
-    expect(priceLikeHumans.exponentFormatter(cases.string)).toEqual(cases.string);
-    expect(priceLikeHumans.exponentFormatter(cases.float)).toEqual(cases.floatDotString);
-    expect(priceLikeHumans.exponentFormatter(cases.exponential)).toEqual(cases.exponentialString);
-    expect(priceLikeHumans.exponentFormatter(cases.trashString)).toEqual(cases.trashString);
-    expect(priceLikeHumans.exponentFormatter(cases.floatString)).toEqual(cases.floatString);
-  });
-
-  it('excessZeroes', () => {
-    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDot)).toEqual(cases.number);
-    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotString)).toEqual(cases.number);
-    expect(priceLikeHumans.excessZeroes(cases.zeroAfterDotExponential)).toEqual(cases.exponential);
+    expect(plh.exponentFormatter(cases.number)).toEqual(cases.string);
+    expect(plh.exponentFormatter(cases.string)).toEqual(cases.string);
+    expect(plh.exponentFormatter(cases.float)).toEqual(cases.floatDotString);
+    expect(plh.exponentFormatter(cases.exponential)).toEqual(cases.exponentialString);
+    expect(plh.exponentFormatter(cases.trashString)).toEqual(cases.trashString);
+    expect(plh.exponentFormatter(cases.floatString)).toEqual(cases.floatString);
   });
 });

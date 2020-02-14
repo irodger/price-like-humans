@@ -1,8 +1,8 @@
 import locale from './locale';
 
-function exponentFormatter(value) {
+function exponentFormatter(value: number | string): string {
     if (value < 1e-6) {
-      const countAfterDot = value.toString().split('-') > 9 ? 9 : value.toString().split('-')[1];
+      const countAfterDot = Number(value.toString().split('-')) > 9 ? 9 : Number(value.toString().split('-')[1]);
 
       const localeFormatter = new Intl.NumberFormat(locale.lang, {
         style: 'decimal',
@@ -10,7 +10,7 @@ function exponentFormatter(value) {
         useGrouping: false,
       });
 
-      return localeFormatter.format(value).replace(',', '.');
+      return localeFormatter.format(Number(value)).replace(',', '.');
     }
 
     return value.toString();
