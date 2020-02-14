@@ -8,9 +8,9 @@ const getLang = (): string => {
     let locale = 'en';
 
     // @ts-ignore
-    if (typeof navigator !== 'undefined' && typeof navigator.locale !== 'undefined') { locale = navigator.locale }
+    if (typeof navigator !== 'undefined' && typeof navigator.locale !== 'undefined') { locale = navigator.locale; }
     // @ts-ignore
-    if (typeof env !== 'undefined' && typeof env.LANG !== 'undefined') { locale = env.LANG.split('_')[0] }
+    if (typeof env !== 'undefined' && typeof env.LANG !== 'undefined') { locale = env.LANG.split('_')[0]; }
     if (typeof process.env !== 'undefined') {
       const lang = process.env.LANG || process.env.LC_CTYPE;
 

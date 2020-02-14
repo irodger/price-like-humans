@@ -16,10 +16,11 @@ Breaking changes from 0.5.0 to 0.6.0 see changelog
 <details>
     <summary>Show changelog</summary>
     
-    v0.6.0
+    v0.6.1
     - Added typescript
     - Added custom locale to formattedPrice
     - Added several tests
+    - Added minifying
     - Removed excessZero function (if you need that func, just parseFloat your number)
     v0.5.0
     - Built with RollUp and Babel

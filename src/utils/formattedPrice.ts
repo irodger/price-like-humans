@@ -1,7 +1,7 @@
 import reverser from './reverser';
 import locale, { getLocale } from './locale';
 
-type TformattedPrice = {
+export type TformattedPrice = {
   [key: string]: number | string | undefined;
   delimiter?: string;
   separator?: string;
