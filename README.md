@@ -13,7 +13,6 @@ Breaking changes from 0.5.0 to 0.6.0 see the changelog (spoiler: excessZero is d
 ## Features:
 - [Price formatter](#formattedprice)
 - [Exponential formatter](#exponentformatter)
-- [excessZero (Deprecated)](#-excesszero-is-deprecated-)
 
 ## Table of contents
 - [Features](#features)
@@ -39,12 +38,6 @@ npm i --save-dev price-like-humans
 ### Yarn users:
 ```
 yarn add price-like-humans -D
-```
-
-### ⚠️ excessZero is deprecated ⚠️
-If you want to use excessZero function you'll need to install v0.5.0 version
-```
-npm i --save-dev price-like-humans@0.5.0
 ```
 
 ## Methods
