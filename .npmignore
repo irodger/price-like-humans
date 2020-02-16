@@ -11,3 +11,4 @@ coverage
 rollup.config.js
 tsconfig.json
 jest.config.js
+jest-build.config.js
