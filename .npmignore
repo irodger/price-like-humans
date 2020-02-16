@@ -5,6 +5,7 @@ src
 node_modules
 coverage
 .DC_Store
+CODE_OF_CONDUCT.md
 .npmignore
 .gitignore
 .travis.yml
