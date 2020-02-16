@@ -1,6 +1,6 @@
 {
   "name": "price-like-humans",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "JS tools for formatting price or numbers to human likes format.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
