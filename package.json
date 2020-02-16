@@ -1,6 +1,6 @@
 {
   "name": "price-like-humans",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "JS tools for formatting price or numbers to human likes format.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -8,7 +8,10 @@
   "scripts": {
     "build": "rm -rf ./dist && rollup -c",
     "watch": "rollup -cw",
-    "test": "npm run build && jest"
+    "prettier": "prettier --config ./.prettierrc --write './src/*.ts' './src/**/*.ts'",
+    "test": "npm run test:build",
+    "test:src": "jest -o",
+    "test:build": "npm run build && jest -o --config=jest-build.config.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +20,9 @@
   "keywords": [
     "number-formatter",
     "price-formatter",
-    "javascript",
+    "typescript",
     "utility",
+    "js-kit",
     "price",
     "price-utils"
   ],
@@ -32,9 +36,13 @@
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@rollup/plugin-typescript": "^3.0.0",
     "@types/jest": "^25.1.2",
-    "jest": "^24.9.0",
+    "@types/node": "^13.7.1",
+    "jest": "^25.1.0",
+    "path": "^0.12.7",
+    "prettier": "1.19.1",
     "rollup": "^1.27.5",
     "rollup-plugin-uglify": "^6.0.4",
+    "ts-jest": "^25.2.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.5"
   },

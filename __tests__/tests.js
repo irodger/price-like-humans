@@ -27,7 +27,7 @@ const cases = {
   trashString: 'test'
 };
 
-describe('priceLikeHumans', () => {
+describe('dist-test', () => {
   it('test formattedPrice with one argument', () => {
     expect(plh.formattedPrice(10000)).toEqual('10,000');
     expect(plh.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);

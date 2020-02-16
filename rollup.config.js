@@ -1,12 +1,13 @@
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import { uglify } from 'rollup-plugin-uglify';
+import path from 'path';
 
 export default {
-  input: 'src/index.ts',
+  input: path.join(__dirname, 'src', 'index.ts'),
   output: {
-    file: 'dist/index.js',
-    format: 'cjs'
+    file: path.join(__dirname, 'dist', 'index.js'),
+    format: 'cjs',
   },
   plugins: [
     resolve(),
@@ -14,5 +15,5 @@ export default {
       typescript: require('typescript'),
     }),
     uglify(),
-  ]
+  ],
 };

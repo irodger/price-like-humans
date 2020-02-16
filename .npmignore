@@ -1,11 +1,12 @@
+.idea
 __tests__
 src
 node_modules
+.DC_Store
 .npmignore
-.travis.yml
 .gitignore
-.idea
+.travis.yml
+.prettierrc
 rollup.config.js
 tsconfig.json
-yarn.lock
-.DC_Store
+jest.config.js
