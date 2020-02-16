@@ -16,6 +16,10 @@ Breaking changes from 0.5.0 to 0.6.0 see changelog
 <details>
     <summary>Show changelog</summary>
     
+    v0.6.7
+    - Added prettier
+    - Added dev unit tests
+    - Fix imports with methods only
     v0.6.1
     - Added typescript
     - Added custom locale to formattedPrice
