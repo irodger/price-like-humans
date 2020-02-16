@@ -13,7 +13,7 @@ Breaking changes from 0.5.0 to 0.6.0 see the changelog (spoiler: excessZero is d
 ## Features:
 - [Price formatter](#formattedprice)
 - [Exponential formatter](#exponentformatter)
-- [excessZero (Deprecated)](#excesszero-is-deprecated)
+- [excessZero (Deprecated)](#-excesszero-is-deprecated-)
 
 ## Table of contents
 - [Features](#features)
