@@ -39,6 +39,7 @@ describe('formattedPrice tests', () => {
 
   it('test formattedPrice with several arguments', () => {
     expect(formattedPrice({ value: 1000.1234, separator: '.' })).toEqual('1.000,123.4');
+    expect(formattedPrice({ value: '1000.1234' })).toEqual('1,000.123,4');
     expect(formattedPrice({ value: 1000.1234, separator: ',' })).toEqual('1,000.123,4');
     expect(formattedPrice({ value: 1000.1234, delimiter: ',', separator: '.' })).toEqual('1.000,123.4');
     expect(formattedPrice({ value: '1000.1234', delimiter: ',', separator: '.' })).toEqual('1.000,123.4');

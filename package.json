@@ -11,6 +11,8 @@
     "prettier": "prettier --config ./.prettierrc --write './src/*.ts' './src/**/*.ts'",
     "test": "npm run test:build",
     "test:src": "jest -o",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
     "test:build": "npm run build && jest -o --config=jest-build.config.js"
   },
   "repository": {
