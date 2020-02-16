@@ -11,15 +11,13 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
 Breaking changes from 0.5.0 to 0.6.0 see the changelog (spoiler: excessZero is deprecated)
   
 ## Features:
-----
 - [Price formatter](#formattedprice)
 - [Exponential formatter](#exponentformatter)
+- [excessZero (Deprecated)](#excesszero-is-deprecated)
 
 ## Table of contents
-----
 - [Features](#features)
 - [Install](#install)
-  - [excessZero (Deprecated)](#excesszero-is-deprecated)
 - [Methods](#methods)
 - [formattedPrice options](#formattedprice-options)
 - [Usage](#usage)
@@ -33,7 +31,6 @@ Breaking changes from 0.5.0 to 0.6.0 see the changelog (spoiler: excessZero is d
 
 
 ## Install
-----
 ### NPM users:
 ```
 npm i --save-dev price-like-humans
@@ -67,7 +64,6 @@ npm i --save-dev price-like-humans@0.5.0
 ⚠️ Warning: When works in Nodejs environment, intl.NumberFormat contains 'en-US' locale only, so use the `separator` with `delimiter` when the code needs to run on a server-side.
 
 ## Usage
-----
 ### NodeJS
 ```javascript
 const priceLikeHumans = require('price-like-humans');
@@ -81,7 +77,6 @@ import { formattedPrice, exponentFormatter } from 'price-like-humans';
 ```
 
 ## Examples
-----
 ### `formattedPrice`
 Without separator arguments (putted your local separator)
 ```javascript
