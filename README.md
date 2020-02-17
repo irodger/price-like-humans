@@ -14,17 +14,13 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
 
 ⚠️ Breaking changes from 0.6.0 to 0.7.0 see the [changelog](#changelog) (spoiler: changed [arguments](#formattedprice-options-1) in formattedPrice)
 
-## Features:
-
-- [Price formatter](#formattedprice)
-- [Exponential formatter](#exponentformatter)
-
 ## Table of contents
 
-- [Features](#features)
 - [Install](#install)
 - [Methods](#methods)
-- [formattedPrice options](#formattedprice-options)
+  - [Price formatter](#formattedprice)
+    - [formattedPrice options](#formattedprice-options)
+  - [Exponential formatter](#exponentformatter)
 - [Usage](#usage)
   - [NodeJS](#nodejs)
   - [ES6](#es6)
@@ -60,7 +56,7 @@ yarn add price-like-humans -D
 | Argument | Required     | Argument type    | Description                                                                                                      |
 | -------- | ------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
 | value    | _\*required_ | `number, string` | Incoming numbers which will be formatted                                                                         |
-| options  | _optional_   | `object`         | Settings list, like `delimiter`, `separator` and `lang`, see [formattedPrice options](#formattedprice-options-1) |
+| options  | _optional_   | `object`         | Settings list, see [formattedPrice options](#formattedprice-options) |
 
 ### exponentformatter
 
