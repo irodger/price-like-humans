@@ -29,8 +29,8 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
   - [NodeJS](#nodejs)
   - [ES6](#es6)
 - [Examples](#examples)
-  - [FormattedPrice](#formattedprice)
-  - [ExponentFormatter](#exponentformatter)
+  - [FormattedPrice](#formattedprice-examples)
+  - [ExponentFormatter](#exponentformatter-examples)
 - [Changelog](#changelog)
 - [License](#license)
 
@@ -55,12 +55,18 @@ yarn add price-like-humans -D
 | `formattedPrice(value, options)` | `string` | Formatting incoming numbers to humans like price with user locale delimiter |
 | `exponentFormatter(value)`       | `string` | Formatting exponential numbers to human likes numbers. Exponent free        |
 
-## formattedPrice options
+### formattedPrice
 
-| Argument | Required       | Argument type    | Description                                                   |
-| -------- | -------------- | ---------------- | ------------------------------------------------------------- |
-| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted                      |
+| Argument | Required     | Argument type    | Description                                                                                                      |
+| -------- | ------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
+| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted                                                                         |
 | options  | _optional_   | `object`         | Settings list, like `delimiter`, `separator` and `lang`, see [formattedPrice options](#formattedprice-options-1) |
+
+### exponentformatter
+
+| Argument | Required     | Argument type    | Description                              |
+| -------- | ------------ | ---------------- | ---------------------------------------- |
+| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted |
 
 ### formattedPrice options
 
@@ -90,7 +96,7 @@ import { formattedPrice, exponentFormatter } from 'price-like-humans';
 
 ## Examples
 
-### `formattedPrice`
+### `formattedPrice` examples
 
 Without separator arguments (putted your local separator)
 
@@ -135,7 +141,7 @@ formattedPrice(12345.6789, { lang: 'en' });
 //> "12,345.678,9"
 ```
 
-### `exponentFormatter`
+### `exponentFormatter` examples
 
 ```javascript
 exponentFormatter(1e-7);
