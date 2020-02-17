@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/irodger/price-like-humans.svg?branch=master)](https://travis-ci.org/irodger/price-like-humans)
 [![Codacy Badge Code Grade](https://api.codacy.com/project/badge/Grade/d28c98d454e4433e8cd643a824be8848)](https://www.codacy.com/manual/irodger/price-like-humans?utm_source=github.com&utm_medium=referral&utm_content=irodger/price-like-humans&utm_campaign=Badge_Grade)
 [![Codacy Badge Coverage](https://api.codacy.com/project/badge/Coverage/d28c98d454e4433e8cd643a824be8848)](https://www.codacy.com/manual/irodger/price-like-humans?utm_source=github.com&utm_medium=referral&utm_content=irodger/price-like-humans&utm_campaign=Badge_Coverage)
-[![Dist size](https://img.shields.io/github/size/irodger/price-like-humans/dist/index.js?label=dist%20size)](https://github.com/irodger/price-like-humans)
 [![NPM version](https://badge.fury.io/js/price-like-humans.svg)](http://badge.fury.io/js/price-like-humans)
+[![Dist size](https://img.shields.io/github/size/irodger/price-like-humans/dist/index.js?label=npm%20package%20size)](http://badge.fury.io/js/price-like-humans)
 [![Downloads](https://img.shields.io/npm/dm/price-like-humans.svg)](http://npm-stat.com/charts.html?package=price-like-humans)
 [![License](https://img.shields.io/github/license/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/blob/master/LICENSE)
 [![Issues](https://img.shields.io/github/issues/irodger/price-like-humans.svg?style=flat-square)](https://github.com/irodger/price-like-humans/issues)
@@ -12,7 +12,7 @@
 
 JS kit for formatting price or numbers to human likes format. Also kit will be useful for crypto-currency with 7+ numbers after a delimiter
 
-Breaking changes from 0.5.0 to 0.6.0 see the changelog (spoiler: excessZero is deprecated)
+⚠️ Breaking changes from 0.6.0 to 0.7.0 see the [changelog](#changelog) (spoiler: changed [arguments](#formattedprice-options-1) in formattedPrice)
 
 ## Features:
 
@@ -59,8 +59,8 @@ yarn add price-like-humans -D
 
 | Argument | Required       | Argument type    | Description                                                   |
 | -------- | -------------- | ---------------- | ------------------------------------------------------------- |
-| value    | **\*required** | `number, string` | Incoming numbers which will be formatted                      |
-| options  | **optional**   | `string`         | Delimiter symbol. Number which split decimal. Can be replaced |
+| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted                      |
+| options  | _optional_   | `object`         | Settings list, like `delimiter`, `separator` and `lang`, see [formattedPrice options](#formattedprice-options-1) |
 
 ### formattedPrice options
 
