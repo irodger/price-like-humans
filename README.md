@@ -18,7 +18,7 @@ JS kit for formatting price or numbers to human likes format. Also kit will be u
 - Bundled with [Rollup](https://github.com/rollup/rollup)
 
 #### ⚠️ Breaking changes from 0.6.0 to 0.7.0 see the [changelog](#changelog)
-(spoiler: changed [arguments](#formattedprice-options) in [formattedPrice]((#formattedprice)))
+Spoiler: changed [arguments](#formattedprice-options) in [formattedPrice](#formattedprice)
 
 ## Table of contents
 
