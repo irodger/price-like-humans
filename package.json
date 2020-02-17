@@ -1,6 +1,6 @@
 {
   "name": "price-like-humans",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "description": "JS tools for formatting price or numbers to human likes format.",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -12,6 +12,7 @@
     "test": "npm run test:build",
     "test-with-coverage": "jest --coverage && cat ./coverage/lcov.info | codacy-coverage -t 67007f5f6f8945ef95839115f2e2fb58 -u irodger -n price-like-humans",
     "test:src": "jest -o",
+    "test:src:full": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:build": "npm run build && jest -o --config=jest-build.config.js"

@@ -1,37 +1,30 @@
 import reverser from './reverser';
-import locale, { getLocale } from './locale';
+import getLocale from './locale';
+import { formattedPriceOptionsType } from "../types";
 
-export type TformattedPrice = {
-  value: string | number;
-  delimiter?: string;
-  separator?: string;
-  lang?: string;
-};
+export default (value: string | number, options?: formattedPriceOptionsType): string | boolean => {
+  if (isNaN(Number(value.toString().split('')[0]))) {
+    return false;
+  }
 
-// @ts-ignore
-function formattedPrice({ value, delimiter, separator, lang }: TformattedPrice): string | boolean {
-  if (delimiter === separator && typeof delimiter !== 'undefined') {
+  if (typeof options?.delimiter !== 'undefined' && options?.delimiter === options?.separator) {
     console.error('The delimiter can`t be the same as the separator');
     return false;
   }
 
-  const args = arguments[0];
-  const { delimiter: userDel, separator: userSep } = lang ? getLocale(lang) : locale;
-
-  delimiter = delimiter || userDel;
-  separator = separator || userSep;
+  let delimiter = options?.delimiter || getLocale(options?.lang).delimiter;
+  let separator = options?.separator || getLocale(options?.lang).separator;
 
   if (delimiter === separator) {
     if (separator === '.') delimiter = ',';
-    if (separator === ',') delimiter = '.';
-    if (separator === ' ') delimiter = '.';
+    if (separator === '.') delimiter = ',';
+    if (separator === ',' || separator === ' ') delimiter = '.';
   }
 
-  const myValue = typeof args !== 'object' ? args : value;
   const valueSeparator =
-    reverser(myValue).replace(/\s|\d/g, '').length === 1 ? reverser(myValue).replace(/\s|\d/g, '')[0] : delimiter;
+    reverser(value).replace(/\s|\d/g, '').length === 1 ? reverser(value).replace(/\s|\d/g, '')[0] : delimiter;
   const stringDelimiter = delimiter || valueSeparator;
-  const numberArray = myValue.toString().split(typeof myValue === 'number' ? '.' : valueSeparator);
+  const numberArray = value.toString().split(typeof value === 'number' ? '.' : valueSeparator);
   const regexpWithSpace = /\B(?=(\d{3})+(?!\d))/g;
   const numberBeforeDot = numberArray[0].replace(regexpWithSpace, separator);
 
@@ -43,6 +36,4 @@ function formattedPrice({ value, delimiter, separator, lang }: TformattedPrice):
   }
 
   return numberBeforeDot;
-}
-
-export default formattedPrice;
+};

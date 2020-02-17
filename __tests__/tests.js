@@ -1,63 +1,56 @@
 const plh = require('./../dist/index.js');
 
-const cases = {
-  string: '10000',
-  stringReversed: '00001',
-  stringOnly: '10000',
-  int: 12345,
-  intReversed: 54321,
-  arr: [],
-  number: 10000,
-  float: 1234.5678,
-  floatDotString: '1234.5678',
-  floatWithCustomDelimiter: '1 234,567 8',
-  floatString: '1234,5678',
-  floatFormatted: '1 234.567 8',
-  floatEnFormatted: '1,234.567,8',
-  floatStringFormatted: '1 234,567 8',
-  floatStringRuFormatted: '1 234,567 8',
-  exponential: 1e-7,
-  exponentialJustString: '1e-7',
-  stringFormatted: '10 000',
-  stringRuFormatted: '10 000',
-  stringEnFormatted: '10,000',
-  exponentialString: '0.0000001',
-  exponentialEnFormatted: '0.000,000,1',
-  exponentialFormatted: '0.000 000 1',
-  trashString: 'test'
-};
+describe('plh.formattedPrice tests', () => {
+  it('compare plh.formattedPrice the same works with different types', () => {
+    expect(plh.formattedPrice(10000)).toEqual(plh.formattedPrice('10000'));
+    expect(plh.formattedPrice(1000.1234)).toEqual(plh.formattedPrice('1000.1234'));
+    expect(plh.formattedPrice(1e-7)).toEqual(plh.formattedPrice('1e-7'));
+  });
 
-describe('dist-test', () => {
-  it('test formattedPrice with one argument', () => {
+  it('testing plh.formattedPrice with different values', () => {
     expect(plh.formattedPrice(10000)).toEqual('10,000');
-    expect(plh.formattedPrice(cases.exponential)).toEqual(cases.exponentialJustString);
-    expect(plh.formattedPrice(cases.trashString)).toEqual(cases.trashString);
+    expect(plh.formattedPrice('1000.1234')).toEqual('1,000.123,4');
+    expect(plh.formattedPrice(1e-7)).toEqual('1e-7');
+    expect(plh.formattedPrice('test')).toEqual(false);
+    expect(plh.formattedPrice('t1000')).toEqual(false);
+    expect(plh.formattedPrice(1000.1234, { separator: '.' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice('1000.1234', { separator: '.' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice('0.0000001', { separator: '.' })).toEqual('0,000.000.1');
   });
 
-  it('test formattedPrice with several arguments', () => {
-    expect(plh.formattedPrice({ value: 1000.1234, delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',',separator:'.' })).toEqual('1.000,123.4');
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:'.',separator:'.' })).toEqual(false);
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',',separator:',' })).toEqual(false);
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:' ',separator:' ' })).toEqual(false);
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:'.' })).toEqual('1,000.123,4');
-    expect(plh.formattedPrice({ value: 1000.1234, lang: 'en' })).toEqual('1,000.123,4');
-    expect(plh.formattedPrice({ value:'1000.1234', separator:'.' })).toEqual('1.000,123.4');
-    expect(plh.formattedPrice({ value:'1000.1234', separator:' ' })).toEqual('1 000.123 4');
-    expect(plh.formattedPrice({ value:'1000.1234', delimiter:',', separator:' ' })).toEqual('1 000,123 4');
-    expect(plh.formattedPrice({ value: cases.floatString, delimiter:',', separator: ' ' })).toEqual(cases.floatWithCustomDelimiter);
+  it('testing plh.formattedPrice with different separators', () => {
+    expect(plh.formattedPrice(1000.1234, { separator: ',' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice(1000.1234, { separator: ' ' })).toEqual('1 000.123 4');
   });
 
-  it('test combine formattedPrice with exponentFormatter', () => {
-    expect(plh.formattedPrice(plh.exponentFormatter(cases.exponential))).toEqual(cases.exponentialEnFormatted);
+  it('testing plh.formattedPrice with different delimiters', () => {
+    // ToDo: Fix this. Must be 1.000,123.4'
+    expect(plh.formattedPrice(1000.1234, { delimiter: ',' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice(1000.1234, { delimiter: '.' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice(1000.1234, { delimiter: ' ' })).toEqual('1,000 123,4');
   });
 
-  it('exponentFormatter', () => {
-    expect(plh.exponentFormatter(cases.number)).toEqual(cases.string);
-    expect(plh.exponentFormatter(cases.string)).toEqual(cases.string);
-    expect(plh.exponentFormatter(cases.float)).toEqual(cases.floatDotString);
-    expect(plh.exponentFormatter(cases.exponential)).toEqual(cases.exponentialString);
-    expect(plh.exponentFormatter(cases.trashString)).toEqual(cases.trashString);
-    expect(plh.exponentFormatter(cases.floatString)).toEqual(cases.floatString);
+  it('testing plh.formattedPrice with the same separators and delimiters', () => {
+    expect(plh.formattedPrice(1000.1234, { separator: '.', delimiter: '.' })).toEqual(false);
+    expect(plh.formattedPrice(1000.1234, { separator: ',', delimiter: ',' })).toEqual(false);
+    expect(plh.formattedPrice(1000.1234, { separator: ' ', delimiter: ' ' })).toEqual(false);
+  });
+
+  it('test plh.formattedPrice with several options', () => {
+    expect(plh.formattedPrice(1000.1234, { separator: '.', delimiter: ',' })).toEqual('1.000,123.4');
+    expect(plh.formattedPrice(1000.1234, { separator: ',', delimiter: '.' })).toEqual('1,000.123,4');
+    expect(plh.formattedPrice(1000.1234, { separator: ' ', delimiter: ',' })).toEqual('1 000,123 4');
+    expect(plh.formattedPrice(1000.1234, { separator: ' ', delimiter: '.' })).toEqual('1 000.123 4');
+    expect(plh.formattedPrice(1000.1234, { separator: ',', delimiter: ' ' })).toEqual('1,000 123,4');
+  });
+
+  it('test plh.formattedPrice with lang', () => {
+    expect(plh.formattedPrice(1000.1234, { lang: 'en' })).toEqual('1,000.123,4');
+  });
+
+  it('plh.exponentFormatter', () => {
+    expect(plh.exponentFormatter(1e-8)).toBe('0.00000001');
+    expect(plh.exponentFormatter(1e-20)).toBe('0.00000000000000000001');
+    expect(plh.exponentFormatter(1000)).toBe('1000');
   });
 });

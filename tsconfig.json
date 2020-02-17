@@ -5,6 +5,7 @@
     "module": "es6",
     "strict": true,
     "esModuleInterop": true,
+    "moduleResolution": "node",
     "target": "es5",
     "importHelpers": true,
     "sourceMap": true
