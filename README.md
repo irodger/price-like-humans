@@ -12,6 +12,11 @@
 
 JS kit for formatting price or numbers to human likes format. Also kit will be useful for crypto-currency with 7+ numbers after a delimiter
 
+- Written with [TypeScript](https://github.com/microsoft/TypeScript)
+- Corrected with [Prettier](https://github.com/prettier/prettier)
+- Tested with [Jest](https://github.com/facebook/jest)
+- Bundled with [Rollup](https://github.com/rollup/rollup)
+
 ⚠️ Breaking changes from 0.6.0 to 0.7.0 see the [changelog](#changelog) (spoiler: changed [arguments](#formattedprice-options-1) in formattedPrice)
 
 ## Table of contents
@@ -189,7 +194,7 @@ formattedPrice(exponentFormatter(1e-7));
     - Minor fixes 
     v0.3.1
     - Changed priceFormatter incoming arguments type. Now it takes an object or once value
-    - Tested with [Jest](https://github.com/facebook/jest)
+    - Tested with Jest
     - Refactored locale.js
     - Refactored formattedPrice: Add default values 
 </details>
