@@ -10,7 +10,7 @@ export default (value: number | string): string => {
       useGrouping: false,
     });
 
-    return localeFormatter.format(Number(value)).replace(',', '.');
+    return localeFormatter.format(Number(value.toString().replace(',', '.')));
   }
 
   return value.toString();

@@ -61,14 +61,14 @@ yarn add price-like-humans -D
 
 | Argument | Required     | Argument type    | Description                                                                                                      |
 | -------- | ------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted                                                                         |
+| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted (exponential friendly)                                                                         |
 | options  | _optional_   | `object`         | Settings list, see [formattedPrice options](#formattedprice-options) |
 
 ### exponentformatter
 
 | Argument | Required     | Argument type    | Description                              |
 | -------- | ------------ | ---------------- | ---------------------------------------- |
-| value    | _\*required_ | `number, string` | Incoming numbers which will be formatted |
+| value    | _\*required_ | `number, string` | Incoming exponential numbers which will be formatted |
 
 ### formattedPrice options
 
@@ -143,6 +143,12 @@ formattedPrice(12345.6789, { lang: 'en' });
 //> "12,345.678,9"
 ```
 
+```javascript
+formattedPrice(1e-7, { lang: 'en' });
+
+//> "0.000,000,1"
+```
+
 ### `exponentFormatter` examples
 
 ```javascript
@@ -151,27 +157,13 @@ exponentFormatter(1e-7);
 //> "0.0000001"
 ```
 
-### Also you can combine methods
-
-Exponential with price like humans
-
-```javascript
-formattedPrice(1e-7);
-
-//> '1e-7' // Needs to combine
-```
-
-```javascript
-formattedPrice(exponentFormatter(1e-7));
-
-//> "0.000 000 1"
-```
 
 ## Changelog
 
 <details>
     <summary>Show changelog</summary>
-    
+    v0.8.0
+    - formattedPrice can formats exponential too
     v0.7.0
     - Changed arguments in formattedPrice
     - Add more coverage and tests
